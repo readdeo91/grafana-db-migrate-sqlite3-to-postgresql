@@ -1,0 +1,5 @@
+load database
+  from sqlite://grafana.db
+  into postgresql://<username>:<password>@<address>/grafana
+  with include drop, create tables, create indexes, reset sequences
+  set work_mem to '64MB', maintenance_work_mem to '512 MB';

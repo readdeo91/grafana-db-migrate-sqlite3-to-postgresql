@@ -1,0 +1,1 @@
+sudo podman run --rm -v "/<path_to_db_file>/grafana.db:/grafana.db:Z" -v "/<path_to_main.load_file>/main.load:/main.load:Z" -it dimitri/pgloader:latest
