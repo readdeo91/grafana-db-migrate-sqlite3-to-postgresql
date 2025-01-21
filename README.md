@@ -15,8 +15,8 @@ Installed dependencies:
 
 ### 1. Prepare postgresql
 - Create a user called grafana in your postgresql
-- Create a new database called grafana, with the owner: grafana
-- Create a new database called grafananew, with the owner: grafana
+- Create a new database called **`grafana`**, with the owner: grafana
+- Create a new database called **`grafananew`**, with the owner: grafana
 
 ### 2. Creating a working, empty database for Grafana in the **grafananew** db
 - Stop your Grafana instance
