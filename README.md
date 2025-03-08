@@ -7,6 +7,8 @@ We will use pgloader to migrate the grafana.db file to postgresql into a freshly
 
 After that, the script will scan both database and find the differences in all the table's columns types and tries to alter the tables to the right type.
 
+As the last step you have to create the missing sequences.
+
 ### Prerequisites
 Installed dependencies:
 - postgresql, to run psql command
@@ -48,6 +50,11 @@ It should run without problems, it takes a while and it will report you the amou
 - chmod +x fix_db.sh
 - Open the file and fill in the placeholders.
 - Run the file. It should not give you any errors.
+
+### 5. Fix missing sequences
+After a while I figured out that sequences are missing from the db that prevents alarms to be provisioned.
+Run the sequence_fixinf.sql in the db to fix that. It will restore everything missing on the version I was working on (11.5.2).
+ If you are in a future release and missing sequences not solved by this file, a freshly created Grafana DB can be compared with the imported one to find the missing sequences. After you found what's missing, dump the freshly created DB and copy every line that contains the missing sequences name, review it and execute them in the new DB.
 
 ### 5. Starting up grafana with the new db
 - **Modify Grafana's configuration** to use the **`grafana`** database.
